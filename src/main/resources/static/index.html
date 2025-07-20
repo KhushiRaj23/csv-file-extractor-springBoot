@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV File Extractor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <i class="fas fa-file-csv"></i>
+                    CSV File Extractor
+                </h1>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+
+        <main class="main-content">
+            <section class="upload-section" id="uploadSection">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h2>Upload CSV File</h2>
+                        <p>Drag and drop your CSV file here, or click to browse</p>
+                        <input type="file" id="fileInput" accept=".csv" hidden>
+                        <button class="upload-btn" id="uploadBtn" type="button">
+                            <i class="fas fa-folder-open"></i>
+                            Choose File
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- File Info Section -->
+            <section class="file-info" id="fileInfo" style="display: none;">
+                <div class="file-details">
+                    <div class="file-info-header">
+                        <i class="fas fa-file-csv file-icon"></i>
+                        <div class="file-text">
+                            <h3 id="fileName">filename.csv</h3>
+                            <p id="fileSize">0 KB</p>
+                        </div>
+                        <button class="remove-file-btn" id="removeFile" aria-label="Remove file">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Preview Section -->
+            <section class="preview-section" id="previewSection" style="display: none;">
+                <div class="section-header">
+                    <h2>Data Preview</h2>
+                    <div class="preview-controls">
+                        <button class="btn btn-secondary" id="selectAllBtn">
+                            <i class="fas fa-check-square"></i>
+                            Select All
+                        </button>
+                        <button class="btn btn-secondary" id="deselectAllBtn">
+                            <i class="fas fa-square"></i>
+                            Deselect All
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="preview-table" id="previewTable">
+                        <thead>
+                            <tr id="headerRow"></tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Column Selection Section -->
+            <section class="column-selection" id="columnSelection" style="display: none;">
+                <div class="section-header">
+                    <h2>Select Columns to Extract</h2>
+                    <p>Choose which columns you want to include in the extracted file</p>
+                </div>
+                
+                <div class="columns-grid" id="columnsGrid">
+                    <!-- Column checkboxes will be dynamically generated here -->
+                </div>
+            </section>
+
+            <!-- Action Section -->
+            <section class="action-section" id="actionSection" style="display: none;">
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="extractBtn">
+                        <i class="fas fa-download"></i>
+                        Extract Selected Columns
+                    </button>
+                    <button class="btn btn-secondary" id="previewExtractBtn">
+                        <i class="fas fa-eye"></i>
+                        Preview Extraction
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <p id="loadingText">Processing your file...</p>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
